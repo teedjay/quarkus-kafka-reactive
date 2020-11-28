@@ -11,10 +11,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("/stream")
-public class MessageStreamSSE {
+public class MessageSSE {
 
     @Inject
-    @Channel("test-output")
+    @Channel("sse")
     Publisher<String> stream;
 
     @GET

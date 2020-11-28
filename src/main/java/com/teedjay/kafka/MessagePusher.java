@@ -20,8 +20,8 @@ public class MessagePusher {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String push() {
-        int count = 1000;
-        IntStream.range(0, count).forEach(i -> emitter.send("nummer=" + i).toCompletableFuture().join());
+        int count = 9;
+        IntStream.range(0, count).forEach(i -> emitter.send("[pusher:" + i + "]").toCompletableFuture().join());
         return "Just sent %d messages%n".formatted(count);
     }
 
