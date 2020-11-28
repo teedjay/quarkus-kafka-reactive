@@ -10,18 +10,18 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/prices")
-public class PriceResource {
+@Path("/stream")
+public class MessageStreamSSE {
 
     @Inject
-    @Channel("test-output") Publisher<String> prices;
+    @Channel("test-output")
+    Publisher<String> stream;
 
     @GET
-    @Path("/stream")
     @Produces(MediaType.SERVER_SENT_EVENTS)
     @SseElementType("text/plain")
     public Publisher<String> stream() {
-        return prices;
+        return stream;
     }
 
 }

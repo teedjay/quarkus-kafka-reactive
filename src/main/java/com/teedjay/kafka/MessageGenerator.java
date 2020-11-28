@@ -9,12 +9,12 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 @ApplicationScoped
-public class PriceGenerator {
+public class MessageGenerator {
 
     private Random random = new Random();
     private AtomicLong count = new AtomicLong();
 
-    @Outgoing("test-input")
+    @Outgoing("generator")
     public Multi<String> generate() {
         return Multi.createFrom().ticks().every(Duration.ofMillis(1000))
                 .onOverflow().drop()
