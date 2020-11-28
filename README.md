@@ -32,7 +32,10 @@ curl http://localhost:8080/push         <== push 9 new messages quickly
 curl http://localhost:8080/stream       <== connect and stream SSE events
 
 http://localhost:8080/health-ui/
+http://localhost:8080/swagger-ui/
+
 http://localhost:8080/metrics/
+http://localhost:8080/openapi
 ```
 
 ## Packaging and running the application
