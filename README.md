@@ -1,5 +1,4 @@
 # quarkus-kafka-reactive project
-
 This project uses [Quarkus](https://quarkus.io/), the Supersonic Subatomic Java Framework.
 
 ## Start a local Kafka server
@@ -15,11 +14,25 @@ docker run -d \
 ```
 
 ## Running the application in dev mode and Java 15 with preview features enabled
-
 You can run your application in dev mode that enables live coding using:
 ```
 export _JAVA_OPTIONS="--enable-preview"
 ./mvnw quarkus:dev
+```
+
+## Testing the application
+MessageGenerator will push a new message to `test-input` topic each second.
+MessagePusher can be triggered manually to quickly send 9 new messages onto `test-input` topic.
+MessageProcessor will read for `test-input` simulate work for random ms (max 1 second) and put onto `test-output`
+MessageStreamer will read from `test-input` topic and push to in-memory `sse` channel for MessageSSE to handle.
+
+Here are the different endpoints you can use for test.
+```
+curl http://localhost:8080/push         <== push 9 new messages quickly
+curl http://localhost:8080/stream       <== connect and stream SSE events
+
+http://localhost:8080/health-ui/
+http://localhost:8080/metrics/
 ```
 
 ## Packaging and running the application
